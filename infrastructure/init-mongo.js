@@ -1,0 +1,1 @@
+db.getSiblingDB('java-test').createUser({user:'java', pwd:'java', roles:[{role:'readWrite',db:'java-test'}]});
