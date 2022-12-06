@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Objects;
 
 
@@ -26,6 +27,15 @@ public class Controller {
         service.savedUser();
         service.saveTeam();
         return ResponseEntity.ok("");
+    }
+
+    @GetMapping(value = "/teams-users", produces="application/json")
+    public ResponseEntity getAllTeamAndUser() throws TeamAndUserException {
+        final List<TeamAndUserModel> response =  this.service.getAllTeamAndUser();
+        if(Objects.isNull(response)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping(value = "/team-user", produces="application/json")

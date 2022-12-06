@@ -24,6 +24,9 @@ public class Service {
     @Autowired
     private HttpService httpService;
 
+    public List<TeamAndUserModel> getAllTeamAndUser() throws TeamAndUserException {
+        return this.repositoryService.getAllTeamAndUser();
+    }
     public TeamAndUserModel getTeamAndUser(String team) throws TeamAndUserException {
         final Optional<TeamAndUserModel> teamAndUserFound = getTeamAndUserModel(team);
         return teamAndUserFound.get();

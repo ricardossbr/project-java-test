@@ -1,6 +1,5 @@
 package com.example.projectjavatest.service;
 
-import com.example.projectjavatest.dto.Team;
 import com.example.projectjavatest.model.TeamAndUserModel;
 import com.example.projectjavatest.model.TeamModel;
 import com.example.projectjavatest.model.UserModel;
@@ -10,6 +9,7 @@ import com.example.projectjavatest.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -28,6 +28,9 @@ public class RepositoryService {
         return this.teamAndUserRepository.save(teamAndUser);
     }
 
+    public List<TeamAndUserModel> getAllTeamAndUser() {
+        return this.teamAndUserRepository.findAll();
+    }
     public Optional<TeamAndUserModel> getTeamAndUserByTeam(String id) {
         return this.teamAndUserRepository.findById(id);
     }
